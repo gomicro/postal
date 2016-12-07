@@ -1,0 +1,5 @@
+package: github.com/gomicro/postal
+import: []
+testImport:
+- package: github.com/franela/goblin
+- package: github.com/onsi/gomega
