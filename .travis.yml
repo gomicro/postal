@@ -2,5 +2,7 @@ language: go
 go:
   - 1.2
   - tip
+before_script:
+  - curl -s -I -L https://gocover.io/_/github.com/gomicro/postal
 script:
   - go test -v $(go list ./... | grep -v /vendor/)
