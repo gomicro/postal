@@ -4,8 +4,6 @@ import (
 	"net/smtp"
 )
 
-type mailer func(string, smtp.Auth, string, []string, []byte) error
-
 type MailRecord struct {
 	Host string
 	Auth smtp.Auth
@@ -28,7 +26,7 @@ func (p *Postal) Mailed() int {
 	return p.mailed
 }
 
-func (p *Postal) Mailer() mailer {
+func (p *Postal) Mailer() func(string, smtp.Auth, string, []string, []byte) error {
 	return func(host string, auth smtp.Auth, from string, to []string, body []byte) error {
 		record := MailRecord{
 			Host: host,
