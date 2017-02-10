@@ -28,6 +28,10 @@ func (p *Postal) Mailed() int {
 
 func (p *Postal) Mailer() func(string, smtp.Auth, string, []string, []byte) error {
 	return func(host string, auth smtp.Auth, from string, to []string, body []byte) error {
+		if p.err != nil {
+			return p.err
+		}
+
 		record := MailRecord{
 			Host: host,
 			Auth: auth,
@@ -38,7 +42,7 @@ func (p *Postal) Mailer() func(string, smtp.Auth, string, []string, []byte) erro
 		p.mailRecords = append(p.mailRecords, record)
 		p.mailed++
 
-		return p.err
+		return nil
 	}
 }
 
