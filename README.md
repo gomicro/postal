@@ -1,71 +1,28 @@
 # Postal
 [![Build Status](https://travis-ci.org/gomicro/postal.svg)](https://travis-ci.org/gomicro/postal)
-[![Coverage](http://gocover.io/_badge/github.com/gomicro/postal)](http://gocover.io/github.com/gomicro/postal)
-[![GoDoc](https://godoc.org/github.com/gomicro/postal?status.png)](https://godoc.org/github.com/gomicro/postal)
+[![Go Reportcard](https://goreportcard.com/badge/github.com/gomicro/postal)](https://goreportcard.com/report/github.com/gomicro/postal)
+[![GoDoc](https://godoc.org/github.com/gomicro/postal?status.svg)](https://godoc.org/github.com/gomicro/postal)
+[![License](https://img.shields.io/github/license/gomicro/postal.svg)](https://github.com/gomicro/postal/blob/master/LICENSE.md)
+[![Release](https://img.shields.io/github/release/gomicro/postal.svg)](https://github.com/gomicro/postal/releases/latest)
 
 Postal is a mocked SMTP mailer.
 
+# Requirements
+Golang version 1.6 or higher
+
+# Installation
+
+```
+go get github.com/gomicro/postal
+```
+
 # Usage
-Compare a mail record
+See the [examples](https://godoc.org/github.com/gomicro/postal#pkg-examples) within the docs for ways to use the library.
 
-```
-func testMailing(t *testing.T) {
-	host := "mailhost.com:25"
-	auth := smtp.PlainAuth("", "username", "password", "mailhost.com")
-	from := "dev@gomicro.io"
-	to := []string{"foo@bar.com"}
-	body := []byte{"hello world"}
+# Versioning
+The library will be versioned in accordance with [Semver 2.0.0](http://semver.org).  See the [releases](https://github.com/gomicro/postal/releases) section for the latest version.  Until version 1.0.0 the libary is considered to be unstable.
 
-	p := postal.New()
-	SendMail := p.Mailer()
+It is always highly recommended to vendor the version you are using.
 
-	err := SendMail(host, auth, from, to, body)
-	if err != nil {
-		t.Error(err.Error())
-	}
-
-	if p.Mailed() != 1 {
-		t.Errorf("expected 1 mailed, got %v mailed", p.Mailed())
-	}
-
-	records := p.MailRecords()
-	if len(records) != 1 {
-		t.Errorf("expected 1 record, got %v record", len(records))
-	}
-
-	r := records[0]
-	if r.Host != host {
-		t.Errorf("expected %v, got %v", host, r.Host)
-	}
-
-	if r.From != from {
-		t.Errorf("expected %v, got %v", from, r.From)
-	}
-
-	if r.To != to {
-		t.Errorf("expected %v, got %v", to, r.To)
-	}
-
-	if r.Body != body {
-		t.Errorf("expected %v, got %v", string(body), string(r.Body))
-	}
-}
-```
-
-Get an error from sending an email
-
-```
-func testMailing(t *testing.T) {
-	auth := smtp.PlainAuth("", "username", "password", "mailhost.com")
-
-	p := postal.New()
-	p.SetError(fmt.Errorf("something's not quite right here"))
-	SendMail := p.Mailer()
-
-	err := SendMail("mailhost.com:25", auth, "dev@gomicro.io", []string{"foo@bar.com"}, []byte("Hello world"))
-
-	if err == nil {
-		t.Errorf("Expected error, and got nil")
-	}
-}
-```
+# License
+See [LICENSE.md](./LICENSE.md) for more information.
