@@ -1,7 +1,9 @@
 # Postal
 [![Build Status](https://travis-ci.org/gomicro/postal.svg)](https://travis-ci.org/gomicro/postal)
-[![Coverage](http://gocover.io/_badge/github.com/gomicro/postal)](http://gocover.io/github.com/gomicro/postal)
-[![GoDoc](https://godoc.org/github.com/gomicro/postal?status.png)](https://godoc.org/github.com/gomicro/postal)
+[![Go Reportcard](https://goreportcard.com/badge/github.com/gomicro/postal)](https://goreportcard.com/report/github.com/gomicro/postal)
+[![GoDoc](https://godoc.org/github.com/gomicro/postal?status.svg)](https://godoc.org/github.com/gomicro/postal)
+[![License](https://img.shields.io/github/license/gomicro/postal.svg)](https://github.com/gomicro/postal/blob/master/LICENSE.md)
+[![Release](https://img.shields.io/github/release/gomicro/postal.svg)](https://github.com/gomicro/postal/releases/latest)
 
 Postal is a mocked SMTP mailer.
 
