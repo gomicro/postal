@@ -7,6 +7,15 @@
 
 Postal is a mocked SMTP mailer.
 
+# Requirements
+Golang version 1.6 or higher
+
+# Installation
+
+```
+go get github.com/gomicro/postal
+```
+
 # Usage
 Compare a mail record
 
@@ -71,3 +80,11 @@ func testMailing(t *testing.T) {
 	}
 }
 ```
+
+# Versioning
+The library will be versioned in accordance with [Semver 2.0.0](http://semver.org).  See the [releases](https://github.com/gomicro/postal/releases) section for the latest version.  Until version 1.0.0 the libary is considered to be unstable.
+
+It is always highly recommended to vendor the version you are using.
+
+# License
+See [LICENSE.md](./LICENSE.md) for more information.
