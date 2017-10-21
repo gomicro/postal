@@ -1,3 +1,4 @@
+//Package postal is a mock SMTP mailer
 package postal
 
 import (
