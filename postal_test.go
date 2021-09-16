@@ -31,9 +31,12 @@ func TestPostal(t *testing.T) {
 			body := []byte("Take us out of the world, Wash. We got us some crime to be done.")
 
 			m := postal.Mailer()
-			m(net.JoinHostPort(host, port), auth, user, to, body)
+			err := m(net.JoinHostPort(host, port), auth, user, to, body)
+			Expect(err).NotTo(HaveOccurred())
 			Expect(postal.Mailed()).To(Equal(1))
-			m(net.JoinHostPort(host, port), auth, user, to, body)
+
+			err = m(net.JoinHostPort(host, port), auth, user, to, body)
+			Expect(err).NotTo(HaveOccurred())
 			Expect(postal.Mailed()).To(Equal(2))
 		})
 
